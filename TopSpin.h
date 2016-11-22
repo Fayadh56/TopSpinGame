@@ -11,8 +11,8 @@ class TopSpinADT {
 public:
 	virtual void shiftLeft() = 0;
 	virtual void shiftRight() = 0;
-	//virtual void spin() = 0;
-	//virtual bool isSolved() = 0;
+	//virtual void spin() = 0;	// IMPLEMENT THIS
+	//virtual bool isSolved() = 0;	// IMPLEMENT THIS
 };
 
 class TopSpin : public TopSpinADT {
@@ -27,12 +27,13 @@ public:
 
 
 	// TopSpin functions
-	//int getSize() const;
+	//int getSize() const; // IMPLEMENT THIS
 	void shiftLeft();
 	void shiftRight();
-	//void spin();
-	//bool isSolved();
+	//void spin();	// IMPLEMENT THIS
+	//bool isSolved();	// IMPLEMENT THIS
 
 };
 
+// IMPLEMENT THIS TO PRINT BOARD. 
 ostream& operator<< (std::ostream& os, const TopSpin& ts);
