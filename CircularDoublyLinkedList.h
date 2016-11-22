@@ -1,6 +1,6 @@
-//
-// Created by Matthew Chan on 2016-11-19.
-//
+/* Made by Fayadh Ahamed Mohamed Nafeez,
+* Student Number 250833038 */
+
 
 #pragma once
 #include <iostream>
@@ -14,14 +14,13 @@ public:
 		Node * next;
 		Node * prev;
 	};
+	// end of Node Class
 
 public:
 	CircularDoublyLinkedList(); //constructor
 	~CircularDoublyLinkedList(); //destructor
 	void addHead(T item);
 	unsigned int size() const;
-	void print();
-	void reversePrint();
 	Node* getHead() { return m_head; }
 	void move_head(bool direction); // to move left and right through the cdll
 
@@ -31,44 +30,25 @@ public:
 	unsigned int m_size;
 
 public:
-	class Iterator {// iterators are used for efficient traversal of linked lists
+	class Iterator { // iterators for secure traversal of the cd-linkedlists
 	private:
-		Node* m_ptr;    // an iterator hides a pointer to node
+		Node* m_ptr; // an iterator hides a pointer to node
 	public:
-		Iterator(Node* ptr) { 
-			m_ptr = ptr; 
-		}
-
-		void operator++ () {
-			m_ptr = m_ptr->next;	// for forward traversing, e,g, Iterator i=begin(); ... ++i
-		} 
-
-		
-
-		void operator-- () {
-			m_ptr = m_ptr->prev;	// for backward traversing
-		}
-
-		bool operator != (const Iterator& b) {
-			return m_ptr != b.m_ptr;
-		}
-
-		T operator *() { 
-			return m_ptr->value;
-		}
-		T getValue() {
-			return m_ptr->value;
-		}
-
-		void setValue(T val) {
-			m_ptr->value = val;
-		}
-	};
+		Iterator(Node* ptr) {m_ptr = ptr;}
+		void operator++ () {m_ptr = m_ptr->next;} 
+		void operator-- () {m_ptr = m_ptr->prev;}	// for backward traversing
+		bool operator != (const Iterator& b) {return m_ptr != b.m_ptr;}
+		T getValue() {return m_ptr->value;}
+		void setValue(T val) {m_ptr->value = val;}
+	}; 
+	// End of Iterator Class
 
 	// linked list objects create forward-traversal iterators using the two functions below
-	Iterator begin() { return Iterator(m_head); }
-	Iterator end() { return Iterator(m_tail); }
+	Iterator begin() const {return Iterator(m_head);} //must have const, so as to prevent outside modification 
+	Iterator end() const {return Iterator(m_tail);}
+	Iterator getHead() const { return Iterator(m_head); }
 };
+// End of CDLL class
 
 template <class T>
 CircularDoublyLinkedList<T>::CircularDoublyLinkedList(): m_head(nullptr), m_tail(nullptr), m_size(0)
@@ -113,33 +93,7 @@ CircularDoublyLinkedList<T>::~CircularDoublyLinkedList() {
 
 }
 
-template <class T>
-void CircularDoublyLinkedList<T>::print() {
-	int i = 0;
-	Node* temp = m_head;
-	std::cout << "Forward: ";
-	while (i < m_size) {
-		std::cout << temp->value << " ";
-		temp = temp->next; // prints forwardly, as in 1,2,3,4,5..
-		i++;
-	}
-	cout << endl;
-}
-
-template <class T>
-void CircularDoublyLinkedList<T>::reversePrint() {
-
-	int i = 0;
-	Node* temp = m_tail;
-	std::cout << "Reverse: ";
-
-	while (i < m_size) {
-		std::cout << temp->value << " ";
-		temp = temp->prev; // prints in reverse, 20,19,18....
-		i++;
-	}
-	cout << endl;
-}
+// My move head function, which moves the head from one node to the other, either left(backwards) or right(forwards)
 
 template <class T>
 void CircularDoublyLinkedList<T>::move_head(bool direction) {
