@@ -9,8 +9,8 @@ using namespace std;
 
 class TopSpinADT {
 public:
-	//virtual void shiftLeft() = 0;
-	//virtual void shiftRight() = 0;
+	virtual void shiftLeft() = 0;
+	virtual void shiftRight() = 0;
 	//virtual void spin() = 0;
 	//virtual bool isSolved() = 0;
 };
@@ -27,11 +27,12 @@ public:
 
 
 	// TopSpin functions
-	int getSize() const;
-	//void shiftLeft();
-	//void shiftRight();
+	//int getSize() const;
+	void shiftLeft();
+	void shiftRight();
 	//void spin();
-	//bool isSolved();
+	//bool isSolved();
+
 };
 
 ostream& operator<< (std::ostream& os, const TopSpin& ts);
