@@ -21,6 +21,16 @@ TopSpin::TopSpin(int size, int spinSize)
 	}
 }
 
+void TopSpin::shiftLeft()
+{
+	gameBoard.move_head(0);
+}
+
+void TopSpin::shiftRight()
+{
+	gameBoard.move_head(1);
+}
+
 
 /*ostream & operator<<(std::ostream & os, const TopSpin & ts)
 {
