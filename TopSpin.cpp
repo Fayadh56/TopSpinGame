@@ -31,6 +31,7 @@ void TopSpin::shiftRight()
 	gameBoard.move_head(1);
 }
 
+// TO DO: IMPLEMENT OPERATOR OVERLOAD SO YOU CAN PRINT THE BOARD
 
 /*ostream & operator<<(std::ostream & os, const TopSpin & ts)
 {
